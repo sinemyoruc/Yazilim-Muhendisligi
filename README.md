@@ -15,6 +15,6 @@ Microsoft.Owin.Security.Cookies
 
 
 Projeyi Hazırlayanlar:
-Hatice Nur TATAROĞLU - 18253049
-Sinem YORUÇ - 18253063
+Hatice Nur TATAROĞLU - 18253049--------
+Sinem YORUÇ - 18253063-------
 Günseli ÇOLAK - 18253069
