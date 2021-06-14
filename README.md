@@ -12,3 +12,9 @@ Microsoft.Owin
 Microsoft.AspNet.SignalR
 Microsoft.Office.Interop.Excel
 Microsoft.Owin.Security.Cookies
+
+
+Projeyi Hazırlayanlar:
+Hatice Nur TATAROĞLU - 18253049
+Sinem YORUÇ - 18253063
+Günseli ÇOLAK - 18253069
