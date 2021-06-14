@@ -1,0 +1,72 @@
+﻿@model DostEli.Models.Table_Manager
+@{
+    ViewBag.Title = "YöneticiGiriş";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Yönetici Giriş</title>
+
+    <style>
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm("IndexLoginManager", "LoginManager", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline"> Yönetici Girişi </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.M_UserName)</td>
+                    <td>@Html.EditorFor(model => model.M_UserName)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.M_UserName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.M_Password)</td>
+                    <td>@Html.PasswordFor(model => model.M_Password)</td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.M_Password)</td>
+                </tr>
+                @*<tr>
+                        <td colspan="2">
+                            <label class="field-validation-error">@Html.DisplayFor(model => Model.LoginErrorMessage)</label>
+                        </td>
+                    </tr>*@
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit" class="btn btn-bordered">Giriş Yap</button>
+                    </td>
+                </tr>
+
+            </table>}
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </div>
+</body>
+</html>
+

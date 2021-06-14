@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Listele";
+}
+
+<h2>Listele</h2>
+
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>YAŞLILAR</th>
+        <th>GÖNÜLLÜLER</th>
+
+    </tr>
+    @foreach (var item in ViewBag.ListDetay)
+    {
+        <tr>
+            <td>@item.Yaslilar</td>
+            <td>@item.Gonulluler</td>
+
+        </tr>
+    }
+</table>

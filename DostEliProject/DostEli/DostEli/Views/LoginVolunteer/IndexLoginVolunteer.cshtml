@@ -1,0 +1,66 @@
+﻿@model DostEli.Models.Table_Volunteer
+@{
+    ViewBag.Title = "GönüllüGiriş";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Gönüllü Giriş</title>
+
+    <style>
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm("IndexLoginVolunteer", "LoginVolunteer", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline">Gönüllü Girişi</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.V_UserName)</td>
+                    <td>@Html.EditorFor(model => model.V_UserName)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.V_UserName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.V_Password)</td>
+                    <td>@Html.PasswordFor(model => model.V_Password)</td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.V_Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit" class="btn btn-bordered">Giriş Yap</button>
+                    </td>
+                </tr>
+
+            </table>}
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </div>
+</body>
+</html>

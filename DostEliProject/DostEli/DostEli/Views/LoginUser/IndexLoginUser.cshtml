@@ -1,0 +1,83 @@
+﻿@model DostEli.Models.Table_User
+
+@{ ViewBag.Title = "KullanıcıGiriş";
+    Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kullanıcı Girişi</title>
+
+    <style>
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 20%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-div">
+        <h1>Giriş Yapınız</h1>
+        @using (Html.BeginForm("IndexLoginUser", "LoginUser", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline"><h2> Kullanıcı Girişi </h2></td>
+                </tr>
+                <tr>
+
+                    <td><b>@Html.LabelFor(model => model.UserName)</b></td>
+                    <td>@Html.EditorFor(model => model.UserName)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.LabelFor(model => model.Password)</b></td>
+                    <td>@Html.PasswordFor(model => model.Password)</td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="field-validation-error">@ViewBag.ErrorMessage</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+
+                        <button type="submit" class="btn btn-bordered"><h3>Giriş Yap</h3></button>
+                        <button type="button" onclick="location='/RegisterUser/AddOrEdit'" class="btn btn-bordered"><h3>Kayıt Ol</h3></button>
+                        <br />
+                        <br />
+                        <h3>
+                            Gönüllü girişi için <a href='/LoginVolunteer/IndexLoginVolunteer' target="_blank">tıklayınız.</a>
+                            <br />
+                            Yönetici girişi için <a href="/LoginManager/IndexLoginManager" target="_blank">tıklayınız.</a>
+                        </h3>
+                    </td>
+                </tr>
+
+            </table>}
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </div>
+</body>
+</html>

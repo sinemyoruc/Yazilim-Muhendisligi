@@ -1,0 +1,55 @@
+﻿@model DostEli.Models.ProductModel
+@{
+    ViewBag.Title = "Kullanıcı";
+}
+@using (Html.BeginForm())
+{
+    <h2>İhtiyaç Duyduğunuz Ürünleri Seçiniz, Adresinizi Giriniz ve ONAY Butonuna Tıklayınız</h2>
+    <br />
+    <br />
+    <h1><b>ÜRÜNLER</b></h1>
+
+    <table>
+        @for (int i = 0; i < Model.Products.Count; i++)
+        {
+            if (i % 3 == 0)
+            {
+                @:<tr></tr>
+            }
+            <td>
+                <h2>
+                    @Html.CheckBoxFor(model => model.Products[i].IsChecked)
+                    <label>@Model.Products[i].ProductName - @Model.Products[i].Price TL</label>&nbsp&nbsp&nbsp
+                    @Html.HiddenFor(model => model.Products[i].Product_Id)
+                    @Html.HiddenFor(model => model.Products[i].ProductName)
+                    @Html.HiddenFor(model => model.Products[i].Price)
+                </h2>
+            </td>
+        }
+    </table>
+    <br />
+    <br />
+    <div>
+        <h2>
+            Adres:
+            @Html.TextBox("Adres", null, new { @maxLength = "50" })
+        </h2>
+    </div>
+    <br />
+    <br />
+    <button type="submit" onclick="alert('İsteğiniz Alınmıştır :)')" class="btn btn-bordered"><h3>ONAY</h3></button>
+}
+
+<br />
+<br />
+<br />
+<br />
+<b>
+
+    <h2><a href='/Calendar/IndexCalendar' target="_blank">Gönüllülerimizin sizi ziyaret etmesini istediğiniz zamanları girmek için tıklayınız.</a></h2>
+</b>
+
+<br />
+<br />
+<br />
+<h2><a href='/Chat/Chat' target="_blank">Sohbet etmek için tıklayınız.</a></h2>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DostEliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ThemeColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsFullDay" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Table_Answer">
+    <Key>
+      <PropertyRef Name="A_Id" />
+    </Key>
+    <Property Name="A_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Volunteer_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="V_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="V_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Score" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsComplete" Type="Boolean" />
+    <Property Name="CreateDay" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_AnswerLine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnswerId" Type="Int32" />
+    <Property Name="Question" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Manager">
+    <Key>
+      <PropertyRef Name="Manager_Id" />
+    </Key>
+    <Property Name="Manager_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="M_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="M_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="M_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="M_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="M_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Match">
+    <Key>
+      <PropertyRef Name="MatchingId" />
+    </Key>
+    <Property Name="Users" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Volunteers" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatchingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Table_Product">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Table_ProductType" Relationship="Self.FK_Table_Product_Table_ProductType" FromRole="Table_Product" ToRole="Table_ProductType" />
+  </EntityType>
+  <EntityType Name="Table_ProductType">
+    <Key>
+      <PropertyRef Name="Type_Id" />
+    </Key>
+    <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Table_Product" Relationship="Self.FK_Table_Product_Table_ProductType" FromRole="Table_ProductType" ToRole="Table_Product" />
+  </EntityType>
+  <EntityType Name="Table_Question">
+    <Key>
+      <PropertyRef Name="Q_Id" />
+    </Key>
+    <Property Name="Q_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDay" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_User">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Volunteer">
+    <Key>
+      <PropertyRef Name="Volunteer_Id" />
+    </Key>
+    <Property Name="Volunteer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="V_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="V_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="V_Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="V_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="V_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="V_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Table_Product_Table_ProductType">
+    <End Role="Table_ProductType" Type="Self.Table_ProductType" Multiplicity="1" />
+    <End Role="Table_Product" Type="Self.Table_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_ProductType">
+        <PropertyRef Name="Type_Id" />
+      </Principal>
+      <Dependent Role="Table_Product">
+        <PropertyRef Name="Type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DostEliEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Event" EntityType="Self.Event" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Table_Answer" EntityType="Self.Table_Answer" />
+    <EntitySet Name="Table_AnswerLine" EntityType="Self.Table_AnswerLine" />
+    <EntitySet Name="Table_Manager" EntityType="Self.Table_Manager" />
+    <EntitySet Name="Table_Match" EntityType="Self.Table_Match" />
+    <EntitySet Name="Table_Product" EntityType="Self.Table_Product" />
+    <EntitySet Name="Table_ProductType" EntityType="Self.Table_ProductType" />
+    <EntitySet Name="Table_Question" EntityType="Self.Table_Question" />
+    <EntitySet Name="Table_User" EntityType="Self.Table_User" />
+    <EntitySet Name="Table_Volunteer" EntityType="Self.Table_Volunteer" />
+    <AssociationSet Name="FK_Table_Product_Table_ProductType" Association="Self.FK_Table_Product_Table_ProductType">
+      <End Role="Table_ProductType" EntitySet="Table_ProductType" />
+      <End Role="Table_Product" EntitySet="Table_Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

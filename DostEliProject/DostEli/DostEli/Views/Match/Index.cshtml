@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Yönetici";
+}
+<br />
+<h1>YÖNETİCİ SAYFASI</h1>
+<br />
+<br />
+
+<b>
+    <h3>Takvimleri görmek için <a href='/Calendar/IndexCalendar' target="_blank">tıklayınız.</a></h3>
+</b>
+<br />
+<br />
+<b>
+<h3>Yaptığınız Eşleştirmeleri Yükleyiniz</h3>
+</b>
+<br />
+@using (Html.BeginForm("UploadExcel", "Match", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr>
+            <td>Dosya Seç:</td>
+            <td>
+                <input type="file" name="excelFile" />
+            </td>
+        </tr>
+        <tr>
+
+            <td colspan="2">
+                <br />
+                <input type="submit" name="Submit" value="Görüntüle" />
+            </td>
+        </tr>
+    </table>
+}

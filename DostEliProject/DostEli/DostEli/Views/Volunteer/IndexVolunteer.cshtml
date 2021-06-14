@@ -1,0 +1,29 @@
+﻿@model DostEli.Models.MatchModel
+@{ ViewBag.Title = "IndexVolunteer"; }
+
+<h2>EŞLEŞMELER</h2>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>YAŞLILAR</th>
+        <th>GÖNÜLLÜLER</th>
+    </tr>
+
+    @foreach (var item in Model.match)
+    {
+<tr>
+    <td>@item.Users</td>
+    <td>@item.Volunteers</td>
+
+</tr>}
+</table>
+<br />
+<br />
+<b>
+
+    <h2>Müsait olduğunuz zamanları girmek için <a href='/Calendar/IndexCalendar' target="_blank">tıklayınız.</a></h2>
+</b>
+
+<br />
+<br />
+<br />
+<h2>Sohbet etmek için <a href='/Chat/Chat' target="_blank">tıklayınız.</a></h2>
